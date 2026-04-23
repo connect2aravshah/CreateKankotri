@@ -303,8 +303,28 @@
             </section>
 
             <section class="mt-14">
-                <div class="text-center text-xs text-slate-500">
-                    © {{ date('Y') }} {{ config('app.name', 'CreateKankotri') }}. All rights reserved.
+                @php
+                    $whatsappNumber = '9328967012';
+                    $callNumber = '9033816535';
+                    $waText = rawurlencode("Hi, I want to know more about invitation templates.\n\nLink: " . url('/templates'));
+                    $waLink = "https://wa.me/91{$whatsappNumber}?text={$waText}";
+                    $callLink = "tel:+91{$callNumber}";
+                @endphp
+
+                <div class="flex flex-col items-center gap-3 text-xs text-slate-500">
+                    <div class="flex items-center gap-2">
+                        <a href="{{ $waLink }}" target="_blank" rel="noreferrer"
+                           class="inline-flex items-center justify-center rounded-full px-4 h-9 text-xs font-semibold text-white bg-green-600 hover:bg-green-700 shadow ring-2 ring-green-500/20">
+                            WhatsApp
+                        </a>
+                        <a href="{{ $callLink }}"
+                           class="inline-flex items-center justify-center rounded-full px-4 h-9 text-xs font-semibold border border-slate-200 bg-white/70 hover:bg-white shadow ring-2 ring-slate-900/5">
+                            Call
+                        </a>
+                    </div>
+                    <div class="text-center">
+                        © {{ date('Y') }} {{ config('app.name', 'CreateKankotri') }}. All rights reserved.
+                    </div>
                 </div>
             </section>
         </main>

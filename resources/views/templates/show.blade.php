@@ -16,6 +16,9 @@
         $pageUrl = url()->current();
         $waText = rawurlencode("Hi, I want this invitation template: {$title}\n\nLink: {$pageUrl}");
         $waLink = "https://wa.me/91{$whatsappNumber}?text={$waText}";
+
+        $callNumber = '9033816535';
+        $callLink = "tel:+91{$callNumber}";
     @endphp
 
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 pb-28 lg:pb-10">
@@ -34,10 +37,16 @@
                 @endif
             </div>
 
-            <a href="{{ $waLink }}" target="_blank" rel="noreferrer"
-               class="hidden sm:inline-flex items-center justify-center rounded-full px-6 h-11 text-sm font-semibold text-white bg-green-600 hover:bg-green-700 shadow-lg shadow-green-600/20 ring-2 ring-green-500/20">
-                Chat on WhatsApp
-            </a>
+            <div class="hidden sm:flex items-center gap-3">
+                <a href="{{ $waLink }}" target="_blank" rel="noreferrer"
+                   class="inline-flex items-center justify-center rounded-full px-6 h-11 text-sm font-semibold text-white bg-green-600 hover:bg-green-700 shadow-lg shadow-green-600/20 ring-2 ring-green-500/20">
+                    Chat on WhatsApp
+                </a>
+                <a href="{{ $callLink }}"
+                   class="inline-flex items-center justify-center rounded-full px-6 h-11 text-sm font-semibold border bg-white hover:bg-gray-50 shadow-lg shadow-gray-900/5 ring-2 ring-gray-900/5">
+                    Call
+                </a>
+            </div>
         </div>
 
         <div class="grid lg:grid-cols-2 gap-8 items-start">
@@ -56,13 +65,19 @@
                     <h2 class="text-lg font-semibold">Get this template</h2>
                     <p class="mt-1 text-sm text-gray-600">Most people use WhatsApp to confirm quickly.</p>
 
-                    <a href="{{ $waLink }}" target="_blank" rel="noreferrer"
-                       class="mt-5 w-full inline-flex items-center justify-center rounded-2xl px-6 h-12 text-sm font-semibold text-white bg-green-600 hover:bg-green-700 shadow-lg shadow-green-600/20 ring-2 ring-green-500/20">
-                        Chat on WhatsApp (Fastest)
-                    </a>
+                    <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <a href="{{ $waLink }}" target="_blank" rel="noreferrer"
+                           class="w-full inline-flex items-center justify-center rounded-2xl px-6 h-12 text-sm font-semibold text-white bg-green-600 hover:bg-green-700 shadow-lg shadow-green-600/20 ring-2 ring-green-500/20">
+                            WhatsApp (Fastest)
+                        </a>
+                        <a href="{{ $callLink }}"
+                           class="w-full inline-flex items-center justify-center rounded-2xl px-6 h-12 text-sm font-semibold border bg-white hover:bg-gray-50 shadow ring-2 ring-gray-900/5">
+                            Call
+                        </a>
+                    </div>
 
                     <div class="mt-3 text-xs text-gray-500">
-                        WhatsApp: {{ $whatsappNumber }}
+                        WhatsApp: {{ $whatsappNumber }} · Call: +91 {{ substr($callNumber, 0, 5) }} {{ substr($callNumber, 5) }}
                     </div>
                 </div>
             </div>
@@ -71,11 +86,18 @@
 
     <div class="fixed bottom-0 inset-x-0 z-50 sm:hidden">
         <div class="mx-auto max-w-6xl px-4 pb-4">
-            <div class="rounded-2xl border bg-white/95 backdrop-blur shadow-lg p-3 flex gap-3">
-                <a href="{{ $waLink }}" target="_blank" rel="noreferrer"
-                   class="flex-1 inline-flex items-center justify-center rounded-xl h-12 text-sm font-semibold text-white bg-green-600 hover:bg-green-700 shadow ring-2 ring-green-500/20">
-                    WhatsApp (Fastest)
-                </a>
+            <div class="rounded-2xl border bg-white/95 backdrop-blur shadow-lg p-3">
+                <div class="rounded-xl overflow-hidden border bg-white shadow flex">
+                    <a href="{{ $waLink }}" target="_blank" rel="noreferrer"
+                       class="flex-1 inline-flex items-center justify-center h-12 text-sm font-semibold text-white bg-green-600 hover:bg-green-700 ring-2 ring-green-500/20">
+                        WhatsApp
+                    </a>
+                    <div class="w-px bg-gray-200"></div>
+                    <a href="{{ $callLink }}"
+                       class="flex-1 inline-flex items-center justify-center h-12 text-sm font-semibold text-gray-900 bg-white hover:bg-gray-50 ring-2 ring-gray-900/5">
+                        Call
+                    </a>
+                </div>
             </div>
         </div>
     </div>
