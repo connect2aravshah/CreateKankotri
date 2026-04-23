@@ -28,7 +28,7 @@
                 </div>
             </div>
         @else
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-items-center">
                 @foreach ($templates as $t)
                     @php
                         $id = $t['id'] ?? null;
@@ -39,10 +39,10 @@
                     @endphp
 
                     <a href="{{ $url ?: '#' }}"
-                       class="group flex flex-col items-center">
+                       class="group flex flex-col items-center w-full">
                         <div class="relative">
-                            <div class="relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-100 to-gray-50 transition-all duration-300 hover:shadow-lg hover:shadow-black/10 hover:scale-[1.02]"
-                                 style="width:242px;height:523px;contain:layout style paint">
+                            <div class="relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-100 to-gray-50 transition-all duration-300 hover:shadow-lg hover:shadow-black/10 hover:scale-[1.02] w-full max-w-[360px] sm:max-w-[242px] aspect-[242/523]"
+                                 style="contain:layout style paint">
                             @if ($img)
                                 <img src="{{ $img }}" alt="{{ $title }}" class="size-full object-cover object-top">
                             @else
@@ -52,7 +52,7 @@
                             </div>
                         </div>
 
-                        <div class="py-3 space-y-2.5" style="width:242px">
+                        <div class="py-3 space-y-2.5 w-full max-w-[360px] sm:max-w-[242px]">
                             <div class="space-y-1">
                                 <h3 class="line-clamp-2 text-base font-semibold leading-tight">{{ $title }}</h3>
                             </div>
